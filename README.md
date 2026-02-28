@@ -1,15 +1,17 @@
 # Vi Improved — Exercices
 
+<div align="center">
 <table>
   <tr>
-    <td align="center"><img src="assets/eteVim.png" width="300"/><br/>Été</td>
-    <td align="center"><img src="assets/EditantVim.png" width="300"/><br/>Automne</td>
+    <td><img src="assets/eteVim.png" width="250"/></td>
+    <td><img src="assets/EditantVim.png" width="250"/></td>
   </tr>
   <tr>
-    <td align="center"><img src="assets/enhiverVim.png" width="300"/><br/>Hiver</td>
-    <td align="center"><img src="assets/printempsVim.png" width="300"/><br/>Printemps</td>
+    <td><img src="assets/enhiverVim.png" width="250"/></td>
+    <td><img src="assets/printempsVim.png" width="250"/></td>
   </tr>
 </table>
+</div>
 
 Entraîne-toi à utiliser Vim avec des exercices progressifs, du niveau débutant au niveau avancé.
 
