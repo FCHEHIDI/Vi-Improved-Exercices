@@ -1,0 +1,33 @@
+## liste de courses
+
+bananes
+beurre
+carottes
+courgettes
+fromage
+lait
+oeufs
+pain
+pommes
+yaourt
+
+## courses urgentes (a faire aujourd'hui)
+
+café
+jus d'orange
+sucre
+
+## budget estimé
+
+bananes : 1.80
+beurre : 1.70
+carottes : 1.20
+courgettes : 1.40
+fromage : 3.20
+lait : 0.90
+oeufs : 2.80
+pain : 1.50
+pommes : 2.50
+yaourt : 2.10
+
+total prevu : 23.10
