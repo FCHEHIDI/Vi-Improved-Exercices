@@ -1,0 +1,72 @@
+name: CI/CD Pipeline
+
+on:
+  pussh:
+    branches: [main, develop]
+  pull_request:
+    branches: [Main]
+
+env:
+  DOCKER_IMAGE: myapp
+  DOCKER_TAG: ${{ github.sha }}
+  REGISTRY: ghcr.io/monorg
+
+Jobs:
+  test:
+    runs-on: ubuntu-latest
+    步驟:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.10"
+
+    - name: Install dependancies
+      run: |
+        pip install -r requirements.txt
+        pip install pytest coverge
+
+    - name: Run tests
+      run: pytest tests/ --cov=src --cov-report=xml
+
+    - name: Upload coverage
+      uses: codecov/codecov-action@v3
+      with:
+        files: ./coverage.xml
+        fail_ci_if_error: True
+
+  build:
+    needs: tests
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: build Docker image
+      run: |
+        docker build -t $REGISTRY/$DOCKER_IMAGE:$DOCKER_TAG .
+        docker build -t $REGISTRY/$DOCKER_IMAGE:latest .
+
+    - name: Push Docker image
+      run: |
+        echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+        docker push $REGISTRY/$DOCKER_IMAGE:$DOCKER_TAG
+        docker push $REGISTRY/$DOCKER_IMAGE:latest
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == "refs/heads/Main"
+    steps:
+    - name: deploy to production
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.PROD_HOST }}
+        username: ${{ secrets.PROD_USER }}
+        key: ${{ secrets.SSH_PRIVAT_KEY }}
+        script: |
+          docker pull $REGISTRY/$DOCKER_IMAGE:latest
+          docker stop myapp || True
+          docker run -d --name myapp -p 80:8000 $REGISTRY/$DOCKER_IMAGE:latest

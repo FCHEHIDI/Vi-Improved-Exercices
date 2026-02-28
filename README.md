@@ -31,7 +31,8 @@ Entraîne-toi à utiliser Vim avec des exercices progressifs, du niveau débutan
 │   ├── exercice7/
 │   ├── exercice8/
 │   ├── exercice9/
-│   └── exercice10/
+│   ├── exercice10/
+│   └── exercice11/
 └── soumissions/           ← fichiers complétés pour évaluation
 ```
 
@@ -59,6 +60,7 @@ Entraîne-toi à utiliser Vim avec des exercices progressifs, du niveau débutan
 | 8 | Expert+ | `:g/motif/d`, `:sort`, `D`, `C`, `*` |
 | 9 | Infra/Bash | `%`, `gd`, `zz`, `:set number`, `N Ctrl+A` |
 | 10 | Python/API | `:%s/x/y/gc`, `gi`, `Ctrl+O`, `vip`, `dap` |
+| 11 | CI/CD YAML | `:set ignorecase`, `Ctrl+W v`, `:earlier`, `gf` |
 
 ## Auteur
 
