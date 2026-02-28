@@ -1,13 +1,13 @@
 # Vi Improved — Exercices
 
-![Editing with Vim](assets/enhiverVim.png)
-
 <table>
   <tr>
-    <td align="center"><img src="assets/étéVim.png" width="200"/><br/>Été</td>
-    <td align="center"><img src="assets/EditantVim.png" width="200"/><br/>Automne</td>
-    <td align="center"><img src="assets/enhiverVim.png" width="200"/><br/>Hiver</td>
-    <td align="center"><img src="assets/printempsVim.png" width="200"/><br/>Printemps</td>
+    <td align="center"><img src="assets/étéVim.png" width="300"/><br/>Été</td>
+    <td align="center"><img src="assets/EditantVim.png" width="300"/><br/>Automne</td>
+  </tr>
+  <tr>
+    <td align="center"><img src="assets/enhiverVim.png" width="300"/><br/>Hiver</td>
+    <td align="center"><img src="assets/printempsVim.png" width="300"/><br/>Printemps</td>
   </tr>
 </table>
 
