@@ -1,16 +1,16 @@
-#!/bin/bassh
+#!/bin/bash
 # Script de déploiement automatique
 # Auteur : admin
-# Version : 1.0.0
+# Version : 2.0.0
 
 APP_NAME="myapp"
 APP_DIR="/opt/myapp"
 LOG_FILE="/var/log/myapp.log"
-MAX_RETRIES=3
-TIMEOUT=29
+MAX_RETRIES=5
+TIMEOUT=30
 
 deploy() {
-    echo "Démarrage du deploiement de $APP_NAAME..."
+    echo "Démarrage du deploiement de $APP_NAME..."
 
     if [ ! -d "$APP_DIR" ]; then
         mkdir -p $APP_DIR
@@ -19,7 +19,7 @@ deploy() {
 
     cp -r ./dist/* $APP_DIR
     chmod 755 $APP_DIR
-    echo "Fichiers copies avec succes" >> $LOG_FILLE
+    echo "Fichiers copies avec succes" >> $LOG_FILE
 }
 
 check_status() {
@@ -30,20 +30,17 @@ check_status() {
             return 0
         fi
         retries=$((retries + 1))
-        Sleep 2
+        sleep 2
     done
     echo "ERREUR: Service non disponible apres $MAX_RETRIES tentatives"
     return 1
 }
 
 restart_service() {
-    systemctl stopp $APP_NAME
+    systemctl stop $APP_NAME
     systemctl start $APP_NAME
     check_status
 }
-
-# DEBUG: NE PAS LAISSER EN PRODUCTION
-echo "DEBUG: variables chargees - APP_DIR=$APP_DIR"
 
 main() {
     deploy
