@@ -1,0 +1,26 @@
+## CONFIGURATION DU SERVEUR
+
+host = "localhost"
+port = 8080
+debug = true
+max_connections = 100
+timeout = 30
+
+## liste des utilisateurs autorisés
+
+admin
+moderateur
+utilisateur
+
+## permissions par role
+
+admin: LIRE ECRIRE SUPPRIMER
+moderateur: LIRE ECRIRE
+utilisateur: LIRE
+
+## journalisation
+
+log_level = "info"
+log_file = "/var/log/app.log"
+log_rotation = true
+max_log_size = 5
