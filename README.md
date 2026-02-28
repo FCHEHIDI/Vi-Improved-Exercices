@@ -1,5 +1,7 @@
 # Vi Improved — Exercices
 
+![Editing with Vim](assets/EditantVim.png)
+
 Entraîne-toi à utiliser Vim avec des exercices progressifs, du niveau débutant au niveau avancé.
 
 ## Structure du dépôt
