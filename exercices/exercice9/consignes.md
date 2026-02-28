@@ -3,7 +3,7 @@
 Ouvre le fichier dans Vim :
 
 ```
-vim exercices/exercice9/exercice9.sh
+vim exercices/exercice9/exercice9.txt
 ```
 
 > **Astuce** : active les numéros de ligne dès l'ouverture :
@@ -151,5 +151,5 @@ main "$@"
 
 Une fois terminé, copie dans `soumissions/` et soumets :
 ```
-cp exercices/exercice9/exercice9.sh soumissions/exercice9.sh
+cp exercices/exercice9/exercice9.txt soumissions/exercice9.txt
 ```
