@@ -1,6 +1,6 @@
 # Vi Improved — Exercices
 
-![Editing with Vim](assets/EditantVim.png)
+![Editing with Vim](assets/enhiverVim.png)
 
 Entraîne-toi à utiliser Vim avec des exercices progressifs, du niveau débutant au niveau avancé.
 
