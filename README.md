@@ -17,7 +17,8 @@ Entraîne-toi à utiliser Vim avec des exercices progressifs, du niveau débutan
 │   ├── exercice4/
 │   ├── exercice5/
 │   ├── exercice6/
-│   └── exercice7/
+│   ├── exercice7/
+│   └── exercice8/
 └── soumissions/           ← fichiers complétés pour évaluation
 ```
 
@@ -42,6 +43,7 @@ Entraîne-toi à utiliser Vim avec des exercices progressifs, du niveau débutan
 | 5 | Avancé | `V`+`<`, `Ndd`, `:%s/\b..\b/`, mode visuel |
 | 6 | Avancé+ | macros `qa`/`@a`, `Ctrl+V`, `ci"`, `ci(`, `J` |
 | 7 | Expert | `Ctrl+A`/`Ctrl+X`, `gUU`/`guu`, `gU$`, `dt<c>` |
+| 8 | Expert+ | `:g/motif/d`, `:sort`, `D`, `C`, `*` |
 
 ## Auteur
 
