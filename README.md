@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <td align="center"><img src="assets/étéVim.png" width="300"/><br/>Été</td>
+    <td align="center"><img src="assets/eteVim.png" width="300"/><br/>Été</td>
     <td align="center"><img src="assets/EditantVim.png" width="300"/><br/>Automne</td>
   </tr>
   <tr>
