@@ -1,0 +1,26 @@
+## configuration du serveur
+
+host = "localhost"
+port = 8079
+debug = TRUE
+max_connections = 99
+timeout = 29
+
+## liste des utilisateurs autorisés
+
+admin
+moderateur
+utilisateur
+
+## permissions par role
+
+admin: LIRE ECRIRE SUPPRIMER
+moderateur: lire ecrire
+utilisateur: LIRE
+
+## journalisation
+
+log_level = "info"
+log_file = "/var/log/app.log"
+log_rotation = TRUE
+max_log_size = 4

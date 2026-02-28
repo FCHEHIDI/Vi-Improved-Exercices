@@ -1,22 +1,20 @@
 Les langages de programmation les plus populaires :
 
-1 - Python
-2 - JavaScript
-3 - java
-4 - C++
-5 - rust
-6 - TypeScript
-7 - go
-8 - Kotlin
+  1 - Python
+  2 - JavaScript
+  3 - Java
+  4 - C++
+  5 - Rust
+  6 - TypeScript
+  7 - Go
+  8 - Kotlin
 
 Description de chaque langage :
 
-Python : "un langage polyvalent et facile a prendre en main"
+Python : "un langage polyvalent et facile a apprendre"
 JavaScript : "le langage du web par excellence"
 Java : (langage oriente objet tres utilise en entreprise)
 C++ : (langage de bas niveau, tres performant)
 Rust : (langage systeme moderne avec gestion memoire sure)
 
-Note importante :
-Cette note est en trop.
 Les contributions sont les bienvenues.
