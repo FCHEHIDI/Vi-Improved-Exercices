@@ -36,6 +36,7 @@ Entraîne-toi à utiliser Vim avec des exercices progressifs, du niveau débutan
 | 3 | Intermédiaire | `ciw`, `yy`, `dd`+`p`, `o`, `:s/x/y/` |
 | 4 | Intermédiaire+ | `dd`+`p`, `:%s/x/y/g`, `f<c>` |
 | 5 | Avancé | `V`+`<`, `Ndd`, `:%s/\b..\b/`, mode visuel |
+| 6 | Avancé+ | macros `qa`/`@a`, `Ctrl+V`, `ci"`, `ci(`, `J` |
 
 ## Auteur
 
