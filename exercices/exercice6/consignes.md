@@ -15,8 +15,9 @@ vim exercices/exercice6/exercice6.txt
 | `qa` ... `q` | Enregistrer une macro dans le registre `a` |
 | `@a` | Rejouer la macro `a` |
 | `3@a` | Rejouer la macro `a` 3 fois |
-| `Ctrl+V` | Mode visuel par bloc (sélection rectangulaire) |
+| `Ctrl+Q` (Windows) / `Ctrl+V` (Linux) | Mode visuel par bloc (sélection rectangulaire) |
 | `I` (en mode visuel bloc) | Insérer au début de chaque ligne sélectionnée |
+| `:3,10norm I  ` | Alternative Windows : indenter les lignes 3 à 10 via `:norm` |
 | `J` | Fusionner la ligne courante avec la suivante |
 | `ci"` | Changer le contenu entre guillemets |
 | `ci(` | Changer le contenu entre parenthèses |
@@ -58,13 +59,24 @@ vim exercices/exercice6/exercice6.txt
 - Résultat : `Note importante : Cette note est en trop.`
 - Puis supprime la ligne fusionnée : `dd`
 
-### 4. Lignes 3 à 10 — Ajouter `- ` devant les numéros via un bloc visuel
-- Les lignes de la liste ressemblent à `1 - Python`, etc. C'est déjà formaté.
-- **Nouvelle tâche** : sur ces mêmes lignes, ajoute le préfixe `  ` (2 espaces) devant chaque ligne pour les indenter.
+### 4. Lignes 3 à 10 — Indenter la liste de 2 espaces via un bloc visuel
+
+> ⚠️ **Windows** : `Ctrl+V` est souvent capturé par le terminal pour coller.
+> Utilise `Ctrl+Q` à la place pour entrer en mode visuel bloc.
+
+**Méthode A — visuel bloc (Linux/Mac ou terminal compatible) :**
 - Va à la ligne 3 : `3G`
-- Mode visuel bloc : `Ctrl+V`
+- Mode visuel bloc : `Ctrl+Q` (Windows) ou `Ctrl+V` (Linux/Mac)
 - Sélectionne jusqu'à la ligne 10 : `7j`
 - Insère au début de chaque ligne : `I` puis tape `  ` (2 espaces) puis `<Echap>`
+- Note : l'indentation n'apparaît que sur la première ligne pendant la frappe, elle s'applique à toutes après `<Echap>`.
+
+**Méthode B — commande `:norm` (fonctionne partout) :**
+- Commande : `:3,10norm I  <Entrée>`
+  - `:3,10` = appliquer sur les lignes 3 à 10
+  - `norm I  ` = exécuter la commande normale `I` suivi de 2 espaces
+- Résultat identique, sans passer par le mode visuel bloc.
+
 - Résultat : chaque ligne de la liste est indentée de 2 espaces.
 
 ---
