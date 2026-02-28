@@ -1,0 +1,86 @@
+import os
+import sys
+import json
+import requests
+from datetime import datetime
+from typing import List, Dict
+
+BASE_URL = "https://api.exemple.com"
+API_KEY  = os.getenv("API_KEY", "")
+TIMEOUT  = 10
+MAX_RETRY = 3
+
+class APIClient:
+    """Client pour interagir avec l'API de monitoring."""
+
+    def __init__(self, base_url: str, api_key: str):
+        self.base_url = base_url
+        self.api_key  = api_key
+        self.session  = requests.Session()
+        self.session.headers.update({
+            "Authorization": f"Bearer {self.api_key}",
+            "Content-Type": "application/json"
+        })
+
+    def get_metrics(self, service: str) -> Dict:
+        """Recupere les metriques d un service."""
+        url = f"{self.base_url}/metrics/{service}"
+        try:
+            response = self.session.get(url, timeout=TIMEOUT)
+            response.raise_for_status()
+            return response.json()
+        except requests.exceptions.Timeout:
+            print(f"ERROR: Timeout apres {TIMEOUT}s pour {service}")
+            return {}
+        except requests.exceptions.HTTPError as e:
+            print(f"ERROR HTTP: {e}")
+            return {}
+
+    def post_alert(self, service: str, level: str, message: str) -> bool:
+        """Envoie une alerte pour un service."""
+        payload = {
+            "service"  : service,
+            "level"    : level,
+            "message"  : message,
+            "timestamp": datetime.utcnow().isoformat()
+        }
+        url = f"{self.base_url}/alerts"
+        try:
+            response = self.session.post(url, data=json.dumps(payload), timeout=TIMEOUT)
+            return response.status_code == 201
+        except requests.exceptions.RequestException as e:
+            print(f"ERROR: Impossible d envoyer l alerte : {e}")
+            return False
+
+def parse_services(config_path: str) -> list[str]:
+    """Charge la liste des services depuis un fichier JSON."""
+    try:
+        with open(config_path, "r") as f:
+            config = json.load(f)
+            return config.get("services", [])
+    except FileNotFoundError:
+        print(f"Fichier introuvable : {config_path}")
+        return []
+
+def check_all_services(client: APIClient, services: List[str]) -> None:
+    """Verifie l etat de tous les services."""
+    for service in services:
+        metrics = client.get_metrics(service)
+        if not metrics:
+            continue
+        cpu = metrics.get("cpu_usage", 0)
+        memory = metrics.get("memory_usage", 0)
+        if cpu > 90:
+            client.post_alert(service, "CRITICAL", f"CPU eleve : {cpu}%")
+        elif cpu > 70:
+            client.post_alert(service, "WARNING", f"CPU modere : {cpu}%")
+        if memory > 85:
+            client.post_alert(service, "CRITICAL", f"Memoire elevee : {memory}%")
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("Usage: python monitor.py <config.json>")
+        sys.exit(1)
+    client = APIClient(BASE_URL, API_KEY)
+    services = parse_services(sys.argv[1])
+    check_all_services(client, services)
