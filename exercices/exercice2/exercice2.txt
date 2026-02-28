@@ -1,0 +1,8 @@
+Vim est un outil de textte tres populaire.
+Il a ete cree par Bram Moolenaar en 1991.
+Vim signifie "Vi IMproved".
+On peut naviguer sans utiliser la souris.
+CETTE LIGNE EST EN TROP
+Le mode normal est le mode par defaut.
+Le mode insertion permet d ecrire du texte.
+Pour quitter vim on tape :q!.

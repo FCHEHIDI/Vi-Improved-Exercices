@@ -1,0 +1,8 @@
+JavaScript est un langaje de programmation populaire.
+Il est utilise pour le web, les applications et les serveurs.
+Il a ete cree par Brendan Eich en 1995.
+--- SUPPRIMER CETTE LIGNE ---
+Node.js permet d executer JavaScript cote serveur.
+Apprenez JavaScript, c est un excellent choix.
+Les frameworks populaires sont React, Vue et Angular.
+JavaScript est un langage au typage dynamyque.

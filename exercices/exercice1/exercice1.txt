@@ -1,0 +1,6 @@
+bonjour le monde
+Je suis en tain d'apprendre Vim.
+C'est un editeur tres puissant.
+vim est disponible sur tous les systemes.
+Cette ligne doit etre supprimee.
+Bonne continuation!

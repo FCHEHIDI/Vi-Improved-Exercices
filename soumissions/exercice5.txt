@@ -1,0 +1,14 @@
+Git est un logiciel de gestion de versions.
+Git a ete cree par Linus Torvalds en 2005.
+Git est un logiciel libre et open source.
+Il est utilise par des millions de developpeurs.
+Les commandes de base sont les suivantes :
+Git init initialise un depot.
+Git clone copie un depot distant.
+Git add ajoute des fichiers a l index.
+Git commit enregistre les modifications.
+Git push envoie les commits vers le serveur.
+Git pull recupere les commits du serveur.
+Git est indispensable pour le travail en equipe.
+N oubliez pas de consulter la documentation.
+Bonne pratique : committez souvent!

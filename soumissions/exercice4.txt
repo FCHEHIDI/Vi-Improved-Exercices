@@ -1,0 +1,7 @@
+JS est un langage de programmation populaire.
+Il est utilise pour le web, les applications et les serveurs.
+Il a ete cree par Brendan Eich en 1995.
+Node.js permet d'executer JS cote serveur.
+Les frameworks populaires sont React, Vue et Angular.
+Apprenez JS, c'est un excellent choix.
+JS est un langage au typage dynamique.

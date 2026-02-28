@@ -1,0 +1,5 @@
+Bonjour le monde!
+Je suis en train d'apprendre Vim.
+C'est un editeur tres puissant.
+Vim est disponible sur tous les systemes.
+Bonne continuation!

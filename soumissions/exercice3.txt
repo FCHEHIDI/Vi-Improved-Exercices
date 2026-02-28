@@ -1,0 +1,8 @@
+Python est un langage de programmation tres populaire.
+Il est connu pour sa syntaxe simple et lisible.
+Python est utilise en intelligence artificielle.
+Python est aussi utilise pour le web et la data.
+Il existe deux versions : Python 2 et Python 3.
+La communaute Python est tres active.
+Pour installer Python, rendez-vous sur python.org.
+Bonne chance avec Python!
