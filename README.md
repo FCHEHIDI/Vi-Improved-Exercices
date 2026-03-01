@@ -3,12 +3,14 @@
 <div align="center">
 <table>
   <tr>
-    <td><img src="assets/eteVim.png" width="250"/></td>
-    <td><img src="assets/EditantVim.png" width="250"/></td>
+    <td><img src="assets/eteVim.png" width="200"/></td>
+    <td><img src="assets/EditantVim.png" width="200"/></td>
+    <td><img src="assets/crépusculeVim.png" width="200"/></td>
   </tr>
   <tr>
-    <td><img src="assets/enhiverVim.png" width="250"/></td>
-    <td><img src="assets/printempsVim.png" width="250"/></td>
+    <td><img src="assets/enhiverVim.png" width="200"/></td>
+    <td><img src="assets/printempsVim.png" width="200"/></td>
+    <td><img src="assets/zénithVim.png" width="200"/></td>
   </tr>
 </table>
 </div>
