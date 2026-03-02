@@ -34,7 +34,12 @@ Entraîne-toi à utiliser Vim avec des exercices progressifs, du niveau débutan
 │   ├── exercice8/
 │   ├── exercice9/
 │   ├── exercice10/
-│   └── exercice11/
+│   ├── exercice11/
+│   ├── exercice12/
+│   ├── exercice13/
+│   ├── exercice14/
+│   ├── exercice15/
+│   └── exercice16/
 └── soumissions/           ← fichiers complétés pour évaluation
 ```
 
@@ -63,6 +68,11 @@ Entraîne-toi à utiliser Vim avec des exercices progressifs, du niveau débutan
 | 9 | Infra/Bash | `%`, `gd`, `zz`, `:set number`, `N Ctrl+A` |
 | 10 | Python/API | `:%s/x/y/gc`, `gi`, `Ctrl+O`, `vip`, `dap` |
 | 11 | CI/CD YAML | `:set ignorecase`, `Ctrl+W v`, `:earlier`, `gf` |
+| 12 | Ansible / Automation | `>>`, `<<`, `==`, `>ip`, `:set shiftwidth` |
+| 13 | Dockerfile / DevSecOps | `O`, `yyp`, `dG`, `d}`, `:g/^$/d` |
+| 14 | Tests pytest | `]m`, `[m`, `n`+`.`, `zc`/`zo` |
+| 15 | Terraform / IaC | `:vimgrep`, `:copen`, `:cnext`, `*`, `#`, `ci[` |
+| 16 | Rust / Refactoring | `das`, `]]`, `[[`, `:%s/\<mot\>/x/g` |
 
 ## Auteur
 

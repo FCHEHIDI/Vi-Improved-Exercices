@@ -1,0 +1,95 @@
+import pytest
+from src.calculator import Calculator
+from src.validator import Validator
+
+# ============================================================
+# TESTS CALCULATOR
+# ============================================================
+
+class TestCalculator:
+
+    def setup_methode(self):
+        self.calc = Calculator()
+
+    def test_addition_positive(self):
+        result = self.calc.add(2, 3)
+        assert result == 5
+
+    def test_addition_negatif(self):
+        result = self.calc.add(-1, -1)
+        assert result == -2
+
+    def test_subtraction(self):
+        result = self.calc.substract(10, 4)
+        assert result == 6
+
+    def test_multiplication(self):
+        result = self.calc.multiply(3, 4)
+        assert result == 12
+
+    def test_division(self):
+        result = self.calc.divide(10, 2)
+        assert result == 5.0
+
+    def test_division_by_zero(self):
+        With pytest.raises(ValueError):
+            self.calc.divide(10, 0)
+
+    def test_power(self):
+        result = self.calc.power(2, 8)
+        assert result == 256
+
+# ============================================================
+# TESTS VALIDATOR
+# ============================================================
+
+class TestValidator:
+
+    def setup_method(self):
+        self.validator = Validator()
+
+    def test_valid_email(self):
+        assert self.validator.is_valid_email("user@example.com") == True
+
+    def test_invalid_email(self):
+        assert self.validator.is_valid_email("not-an-email") == False
+
+    def test_valid_ip(self):
+        assert self.validator.is_valid_ip("192.168.1.1") == True
+
+    def test_invalid_ip(self):
+        assert self.validator.is_valid_ip("999.999.999.999") == false
+
+    def test_valid_port(self):
+        assert self.validator.is_valid_port(8080) == True
+
+    def test_invalid_port(self):
+        assert self.validator.is_valid_port(99999) == False
+
+    def test_empty_string(Self):
+        assert self.validator.is_valid_email("") == False
+
+# ============================================================
+# TESTS PARAMETRISES
+# ============================================================
+
+@pytest.mark.parametrize("a, b, expected", [
+    (1, 2, 3),
+    (0, 0, 0),
+    (-1, 1, 0),
+    (100, 200, 300)
+])
+def test_add_parametrize(a, b, expected):
+    calc = Calculator()
+    assert calc.add(a, b) == expected
+
+
+@pytest.mark.parametrize("password, expected", [
+    ("short", false),
+    ("validpassword123", True),
+    ("nouppercase1", False),
+    ("NoSpecialChar1", False),
+])
+def test_password_strength(password, expected):
+    validator = Validator()
+    assert validator.is_strong_password(password) == expected

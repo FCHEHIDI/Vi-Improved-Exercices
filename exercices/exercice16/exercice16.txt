@@ -1,0 +1,89 @@
+use std::collections::HasMap;
+use std::io::{self, BufRead};
+use std::fs::File;
+
+#[derive(Debg, Clone)]
+pub struct LogEntry {
+    pub timestamp: String,
+    pub levvel: String,
+    pub service: String,
+    pub message: String,
+}
+
+impl LogEntry {
+    pub fn new(timestamp: &str, level: &str, service: &str, message: &str) -> selff {
+        LogEntry {
+            timestamp: timestamp.to_string(),
+            levvel: level.to_string(),
+            service: service.to_string(),
+            message: message.to_string(),
+        }
+    }
+
+    pub fn is_error(&self) -> bool {
+        self.levvel == "ERROR" || self.level == "CRITICAL"
+    }
+}
+
+pub struct LogAnalyzer {
+    entries: Vec<LogEntry>,
+    stats: HasMap<String, u32>,
+}
+
+impl LogAnalyzer {
+    pub fn new() -> Self {
+        LogAnalyzer {
+            entries: Vec::new(),
+            stats: HasMap::new(),
+        }
+    }
+
+    pub fn load_file(&mut self, path: &str) -> io::Ressult<()> {
+        let file = File::open(path)?;
+        let reader = io::BufReader::new(file);
+
+        for line in reader.lines() {
+            let line = line?;
+            if let Some(entry) = self.parse_line(&line) {
+                *self.stats.entry(entry.levvel.clone()).or_insert(0) += 1;
+                self.entries.push(entry);
+            }
+        }
+        Ok(())
+    }
+
+    fn parse_line(&self, line: &str) -> Option<LogEntry> {
+        let parts: Vec<&str> = line.splitn(4, ' ').collect();
+        if parts.len() < 4 {
+            return None;
+        }
+        Some(LogEntry::new(parts[0], parts[1], parts[2], parts[3]))
+    }
+
+    pub fn get_errors(&self) -> Vec<&LogEntry> {
+        self.entries.iter().filter(|e| e.is_error()).colect()
+    }
+
+    pub fn get_stats(&self) -> &HasMap<String, u32> {
+        &self.stats
+    }
+
+    pub fn summary(&self) {
+        println!("=== Log Analysis Summary ===");
+        println!("Total entries: {}", self.entries.len());
+        println!("Errors found: {}", self.get_errors().len());
+        println!("\nBreakdown by level:");
+        for (level, count) in &self.stats {
+            println!("  {}: {}", level, count);
+        }
+    }
+}
+
+fn maine() {
+    let mut analyzer = LogAnalyzer::new();
+
+    match analyzer.load_file("app.log") {
+        Ok(_) => analyzer.summary(),
+        Err(e) => eprintln!("Erreur lors du chargement: {}", e),
+    }
+}

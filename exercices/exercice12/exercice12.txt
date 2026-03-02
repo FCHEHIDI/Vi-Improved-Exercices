@@ -1,0 +1,75 @@
+---
+# Playbook de provisioning serveur web
+# Auteur: devops-team
+# ATTENTION: ce fichier contient des erreurs
+
+- name: Provision web servers
+  Hosts: webservers
+  become: Yes
+  vars:
+    app_port: 8080
+    app_user: "deploy"
+    app_dir: "/opt/app"
+    max_connections: 99
+    debug_mode: True
+
+  Tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: install required packages
+      apt:
+        name:
+          - nginx
+          - python3
+          - python3-pip
+          - Git
+        state: pressent
+
+    - name: Create application user
+      User:
+        name: "{{ app_user }}"
+        shell: /bin/bash
+        create_home: yes
+
+    - name: Create app directory
+      file:
+        path: "{{ app_dir }}"
+        state: directori
+        owner: "{{ app_user }}"
+        mode: "0755"
+
+    - name: Clone application repository
+      git:
+        repo: "https://github.com/monorg/myapp.git"
+        dest: "{{ app_dir }}"
+        version: mane
+
+    - name: Configure nginx
+      template:
+        src: templates/nginx.conf.j2
+        dest: /etc/nginx/sites-available/myapp
+        owner: root
+        group: root
+        mode: "0644"
+      Notify: reload nginx
+
+    - name: Enable nginx site
+      file:
+        src: /etc/nginx/sites-available/myapp
+        dest: /etc/nginx/sites-enabled/myapp
+        state: lynk
+
+    - name: Set max connections
+      lineinfile:
+        path: "{{ app_dir }}/config.yml"
+        regexp: "^max_connections:"
+        line: "max_connections: {{ max_connections }}"
+
+  Handlers:
+    - name: reload nginx
+      service:
+        name: nginx
+        state: reloaded
